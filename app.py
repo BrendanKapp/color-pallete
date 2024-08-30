@@ -62,10 +62,20 @@ def import_pallete(filename):
     file.close()
     return colors
 
+def import_config():
+    file = open("app.config")
+    config = dict()
+    for line in file:
+        setting, value = line.split("=")
+        config[setting] = value
+    return config
+
 def main():
     app = QApplication(sys.argv)
+
+    config = import_config()
     
-    colors = import_pallete("artifice_pallete.md")
+    colors = import_pallete("palletes/" + config["pallete"] + ".md")
     
     window = ColorSquaresApp(colors)
     sys.exit(app.exec_())
