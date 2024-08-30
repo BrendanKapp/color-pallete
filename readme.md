@@ -6,7 +6,10 @@ A super simple hex color pallete that can sit above all other windows.
 
 ![example](image.png)
 
-Setup your pallete. Dock the window on top. Click to copy the hex code.
+Super simple:
+1. Setup your pallete.
+2. Dock the window on top.
+3. Click to copy the hex code.
 
 ## Use Cases
 
@@ -15,8 +18,9 @@ I use this when developing games in Godot. Having to use the same colors between
 ## Usage
 
 1. Setup your pallete in `palletes/`
-    - See: [Demo Pallete](palletes/demo_pallete.md)
-2. Run app:
+    - See: [Demo Pallete](palletes/demo.md)
+2. Select the pallete to use in `app.config`
+3. Run app:
     > python3 app.py
 
 ## Install Dependencies
