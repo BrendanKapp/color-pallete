@@ -21,18 +21,24 @@ I use this when developing games in Godot. Having to use the same colors between
     - See: [Demo Pallete](palletes/demo.md)
 2. Select the pallete to use in `app.config`
 3. Run app:
-    > python3 app.py
+    ```
+    python3 app.py
+    ```
 
 ## Install Dependencies
 
-> pip install PyQt5
+```
+pip install PyQt5
+```
 
 ## Install as a Desktop App [*Optional*]
 
 1. Update `Exec` and `Icon` path in `pallete.desktop`
 2. Copy the file to `~/.local/share/applications`
 3. Run: 
-    > update-desktop-database ~/.local/share/applications
+    ```
+    update-desktop-database ~/.local/share/applications
+    ```
 4. Verify it appears in the start menu. If not, a system restart may be required.
 
 ## License
