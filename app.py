@@ -78,6 +78,8 @@ def import_config():
             setting, value = line.split("=")
             config[setting] = value
         file.close()
+        # config cleanup
+        config["pallete"] = config["pallete"].replace(".md", "")
         return config
     except Exception as e:
         logger.error("Error loading app.config")
