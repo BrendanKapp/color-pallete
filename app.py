@@ -11,9 +11,12 @@ It is recommended to dock the color pallete at the top of the window list for ma
 """
 
 import sys
+import logging
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QPushButton
 from PyQt5.QtGui import QColor, QClipboard
 from PyQt5.QtCore import Qt, QPropertyAnimation, QRect, pyqtProperty, QTimer
+
+logger = logging.getLogger(__name__)
 
 class ColorSquare(QWidget):
     def __init__(self, color, clipboard):
@@ -55,22 +58,36 @@ class ColorSquaresApp(QWidget):
         self.show()
 
 def import_pallete(filename):
-    file = open(filename)
-    colors = list()
-    for line in file:
-        colors.append(line.strip())
-    file.close()
-    return colors
+    try:
+        file = open(filename)
+        colors = list()
+        for line in file:
+            colors.append(line.strip())
+        file.close()
+        return colors
+    except Exception as e:
+        logger.error("Error loading pallete: " + filename)
+        logger.error(e)
+        exit()
 
 def import_config():
-    file = open("app.config")
-    config = dict()
-    for line in file:
-        setting, value = line.split("=")
-        config[setting] = value
-    return config
+    try:
+        file = open("app.config")
+        config = dict()
+        for line in file:
+            setting, value = line.split("=")
+            config[setting] = value
+        file.close()
+        return config
+    except Exception as e:
+        logger.error("Error loading app.config")
+        logger.error(e)
+        exit()
 
 def main():
+    logging.basicConfig(filename='pallete.log', level=logging.INFO)
+    logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
+
     app = QApplication(sys.argv)
 
     config = import_config()
