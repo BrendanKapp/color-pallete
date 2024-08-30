@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pallete
+Comment=A simple hex based color pallete
+Exec=/path/to/app/app.py
+Icon=/path/to/app/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;
